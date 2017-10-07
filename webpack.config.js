@@ -30,18 +30,18 @@ module.exports = {
       {
         test: /\.s?[ac]ss$/,
         use: ExtractTextPlugin.extract({
-          loader: ['css-loader', 'sass-loader'],
+          use: ['css-loader', 'sass-loader'],
           fallback: 'style-loader'
         }),
         exclude: /node_modules/
       },
       {
         test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: 'url-loader?limit=10000',
+        use: 'url-loader?limit=10000&name=fonts/[name].[ext]',
       },
       {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-        use: 'file-loader',
+        use: 'file-loader?name=fonts/[name].[ext]',
       },
       { 
         test: /bootstrap-sass\/assets\/javascripts\//, 
