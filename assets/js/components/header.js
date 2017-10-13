@@ -5,7 +5,7 @@ class Header extends React.Component {
   render() {
     return (
       <div className="container">
-        <h1 className="alert alert-warning">Bootstrap Header</h1>
+        <h1 className="alert alert-success">Bootstrap Header</h1>
         <h2>Simple Collapsible</h2>
         <p>Click on the button to toggle between showing and hiding content.</p>
         <button type="button" className="btn btn-info" data-toggle="collapse" data-target="#demo">Simple collapsible</button>

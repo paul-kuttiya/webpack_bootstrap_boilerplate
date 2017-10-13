@@ -1,3 +1,8 @@
+#### Issue  
+* cannot extract bootstrap to its own css, will be in bootstrap.bundle.js.  
+If use extractText to extract style.css to own file, will load before bootstrap css in bootstrap.bundle.js.  
+** fixed config all extractStyles: true in .bootstraprc
+
 ## Webpack boiler plate for Front-End projects
 
 * `bundle.js` includes all react components and js in `./assets/js/*`.  
@@ -25,10 +30,12 @@ const VENDOR_LIBS = [
 ];
 
 module.exports = {
+  //specify entry file
   entry: {
     bundle: './assets/js/app.js', //bundle.js for components and js files
     vendor: VENDOR_LIBS //vendor.js for libaray files
   },
+  //output file
   output: {
     path: path.join(__dirname, 'public'), //output path
     filename: '[name].[hash].js' //output file name in hash
@@ -61,7 +68,7 @@ module.exports = {
         test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
         use: 'file-loader',
       },
-      //import jquerys
+      //import jquerys for bootstrap
       { 
         test: /bootstrap-sass\/assets\/javascripts\//, 
         use: 'imports-loader?jQuery=jquery' 
@@ -72,7 +79,8 @@ module.exports = {
   plugins: [
     //extract css to itself instead of including in bundle.js
     new ExtractTextPlugin('[name].css'),
-    //create manifest and check for cashed bundled files    
+    //create manifest and check for cashed bundled files  
+    //check duplication code from bundle.js and vendor.js and refactor to remain only in vendor.js   
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
