@@ -1,8 +1,3 @@
-#### Issue  
-* cannot extract bootstrap to its own css, will be in bootstrap.bundle.js.  
-If use extractText to extract style.css to own file, will load before bootstrap css in bootstrap.bundle.js.  
-** fixed config all extractStyles: true in .bootstraprc
-
 ## Webpack boiler plate for Front-End projects
 
 * `bundle.js` includes all react components and js in `./assets/js/*`.  
@@ -97,3 +92,9 @@ module.exports = {
 };
 
 ```
+
+#### Issue  
+* to extract bootstrap to its own css revise config extractStyles: true in .bootstraprc
+
+* include bootswatch theme needs postcss-loader
+
